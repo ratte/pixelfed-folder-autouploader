@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pixelfed-folder-uploader"
+version = "0.1.0"
+description = "Monitor a folder for new images and upload them to a Pixelfed instance"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "watchdog>=3.0.0",
+    "requests>=2.31.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "pytest-mock>=3.10.0",
+    "responses>=0.23.0",
+]
+
+[project.scripts]
+pixelfed-uploader = "pixelfed_uploader.main:main"
+
+[tool.setuptools.packages.find]
+include = ["pixelfed_uploader*"]
+exclude = ["tests*", "watch*"]
