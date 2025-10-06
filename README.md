@@ -2,6 +2,8 @@
 
 Automatically monitor a folder for new images and upload them to your Pixelfed instance.
 
+**GitHub Repository:** https://github.com/ratte/pixelfed-folder-autouploader
+
 ## Features
 
 - 📁 Monitors a folder for new image files
@@ -39,7 +41,17 @@ cp .env.example .env
 PIXELFED_INSTANCE_URL=https://your-instance.com
 PIXELFED_ACCESS_TOKEN=your_access_token
 WATCH_FOLDER=./watch
+DEFAULT_POST_TEXT=#FotiBox #EventXXX
+CC_LICENSE=CC BY-NC-SA 4.0
 ```
+
+**Configuration Options:**
+
+- `PIXELFED_INSTANCE_URL`: Your Pixelfed instance URL (without trailing slash)
+- `PIXELFED_ACCESS_TOKEN`: Your access token (see below for how to obtain)
+- `WATCH_FOLDER`: Directory to monitor for new images (default: `./watch`)
+- `DEFAULT_POST_TEXT`: (Optional) Default text/tags to add to every post
+- `CC_LICENSE`: (Optional) Creative Commons license to add to every post (e.g., `CC BY-NC-SA 4.0`, `CC BY 4.0`, `CC0 1.0`)
 
 ### Getting a Pixelfed Access Token
 
@@ -79,7 +91,8 @@ pixelfed-folder-autouploader/
 ├── pixelfed_uploader/
 │   ├── __init__.py
 │   ├── main.py              # Main application with file watcher
-│   └── pixelfed_client.py   # Pixelfed API client
+│   ├── pixelfed_client.py   # Pixelfed API client
+│   └── upload_queue.py      # Upload queue management
 ├── tests/
 │   ├── __init__.py
 │   ├── conftest.py          # Shared test fixtures
@@ -145,4 +158,4 @@ pytest -v
 
 ## License
 
-MIT
+GNU General Public License v3.0
